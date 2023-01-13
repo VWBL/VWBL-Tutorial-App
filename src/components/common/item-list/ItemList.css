@@ -1,0 +1,8 @@
+.Item-List {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 40px;
+  row-gap: 80px;
+  width: 1040px;
+  margin: auto;
+}
