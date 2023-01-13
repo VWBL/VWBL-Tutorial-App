@@ -1,0 +1,38 @@
+.Link {
+  text-decoration: none;
+}
+
+.NFT-Item {
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+}
+
+.NFT-Image {
+  background-color: black;
+  padding: 40px 30px;
+}
+
+.NFT-Info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-right: 24px;
+}
+
+.NFT-Title {
+  color: black;
+  font-size: 20px;
+  font-weight: 700;
+  text-align: start;
+}
+
+.NFT-Description {
+  height: 50px;
+  color: #474747;
+  font-size: 14px;
+  font-weight: 400;
+  text-align: start;
+  overflow-wrap: break-word;
+}
