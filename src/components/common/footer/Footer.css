@@ -1,0 +1,12 @@
+.Footer {
+  height: 79px;
+  border-top: 1px solid black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Footer-text {
+  font-size: 12px;
+  color: #aeaeb2;
+}
