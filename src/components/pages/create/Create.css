@@ -1,0 +1,112 @@
+.Create-Container {
+  height: calc(100vh - 180px);
+  overflow-y: scroll;
+  width: 480px;
+  margin: auto;
+  text-align: start;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  padding-bottom: 120px;
+}
+
+.Create-Container::-webkit-scrollbar {
+  display: none;
+}
+
+.Create-Title {
+  font-size: 24px;
+  font-weight: 700;
+  padding: 50px 0px;
+}
+
+.Input-Form {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.Topic {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  align-items: flex-start;
+}
+
+.Topic-Title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.Topic-Description {
+  color: gray.600;
+}
+
+.Text-Input {
+  width: 476px;
+  height: 20px;
+  border: none;
+  border-bottom: 1px solid #e5e5ea;
+  padding-bottom: 8px;
+}
+
+.Text-Input:focus {
+  outline: none;
+  border-bottom: 2px solid black;
+}
+
+.Terms-of-Service {
+  display: flex;
+  gap: 12px;
+  text-align: center;
+}
+
+.Checkbox {
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+}
+
+.Loader {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: solid 4px;
+  border-color: #ffffff gray gray;
+  position: relative;
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.Mint-Button {
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px 40px;
+  background: #090909;
+  color: white;
+  border: none;
+  border-radius: 8px;
+}
+
+.Mint-Button:disabled {
+  background: gray;
+  opacity: 0.6;
+}
+
+.Mint-Button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.Mint-Content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
