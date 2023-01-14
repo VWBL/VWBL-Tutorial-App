@@ -1,21 +1,18 @@
 import { Link } from 'react-router-dom';
 import './NFTItem.css';
 
-export const NFTItem = (nft) => {
-  console.log(nft.nft.image);
+export const NFTItem = ({ nft }) => {
   return (
-    <Link to={`/assets/${nft.nft.id}`} className="Link">
+    <Link to={`/assets/${nft.id}`} className="Link">
       <div className="NFT-Item">
-        <div className="NFT-Image">
-          <img src={nft.nft.image} alt={`${nft.nft.name}`} width={260} height={340} />
+        <div className="NFT-Display">
+          <img className="NFT-Thumbnail" src={nft.image} alt={`${nft.name}`} />
         </div>
         <div className="NFT-Info">
-          <text className="NFT-Title">
-            {nft.nft.name.length >= 24 ? `${nft.nft.name.slice(0, 24)}...` : nft.nft.name}
-          </text>
-          <text className="NFT-Description">
-            {nft.nft.description.length >= 140 ? `${nft.nft.description.slice(0, 140)}...` : nft.nft.description}
-          </text>
+          <span className="NFT-Title">{nft.name.length >= 24 ? `${nft.name.slice(0, 24)}...` : nft.name}</span>
+          <span className="NFT-Description">
+            {nft.description.length >= 140 ? `${nft.description.slice(0, 140)}...` : nft.description}
+          </span>
         </div>
       </div>
     </Link>

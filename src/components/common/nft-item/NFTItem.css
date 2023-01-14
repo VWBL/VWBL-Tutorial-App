@@ -9,9 +9,20 @@
   gap: 26px;
 }
 
-.NFT-Image {
+.NFT-Display {
   background-color: black;
   padding: 40px 30px;
+  width: 260px;
+  height: 340px;
+}
+
+.NFT-Thumbnail {
+  max-height: 100%;
+  max-width: 100%;
+  margin: auto;
+  position: relative;
+  top: 50%;
+  transform: translate(-0%, -50%);
 }
 
 .NFT-Info {
