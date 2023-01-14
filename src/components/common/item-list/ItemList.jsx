@@ -5,7 +5,7 @@ import './ItemList.css';
 
 export const ItemList = ({ nfts }) => {
   return (
-    <div className="Item-List">
+    <div className="Item-List" style={nfts.length === 0 ? { justifyContent: 'center' } : {}}>
       {nfts.map((nft) => {
         return (
           <div key={nft.id}>

@@ -19,12 +19,12 @@ export const Home = () => {
         <>
           <div className="Wallet-Content">
             <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-              <text style={{ fontWeight: 700, fontSize: 20 }}>My wallet</text>
-              <text style={{ fontWeight: 700, fontSize: 16 }}>{userAddress}</text>
+              <span style={{ fontWeight: 700, fontSize: 20 }}>My wallet</span>
+              <span style={{ fontWeight: 700, fontSize: 16 }}>{userAddress}</span>
             </div>
             <button className="Disconnect-Button" onClick={disconnectWallet}>
               <TbWalletOff fontSize={16} />
-              <text>Disconnect Wallet</text>
+              <span>Disconnect Wallet</span>
             </button>
           </div>
           <Tabs selectedIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
