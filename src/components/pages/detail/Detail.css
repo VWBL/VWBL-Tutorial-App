@@ -1,3 +1,52 @@
 .Detail-Container {
-  height: calc(100vh - 180px);
+  width: 480px;
+  display: flex;
+  flex-direction: column;
+  text-align: 'left';
+  padding: 40px 80px 40px 40px;
+}
+
+.Data-Wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.Button-Wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 60px;
+  margin-bottom: auto;
+}
+
+.View-Button {
+  width: 320px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 100px;
+}
+
+.View-Button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.Transfer-Button {
+  width: 320px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: white;
+  border: 1px solid #090909;
+  padding: 8px 20px;
+  border-radius: 100px;
+}
+
+.Transfer-Button:hover {
+  cursor: pointer;
+  opacity: 0.6;
 }
