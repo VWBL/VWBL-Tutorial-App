@@ -4,7 +4,7 @@ import { FilePreviewer, BackButton, NotificationModal } from '../../common';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Create.css';
-import { useDisclosure } from '../../../hook';
+import { useDisclosure } from '../../../hooks';
 
 export const Create = () => {
   const [file, setFile] = useState();
