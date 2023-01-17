@@ -1,5 +1,5 @@
 .Home-Container {
-  height: calc(100vh - 180px);
+  height: calc(100vh - 160px);
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;

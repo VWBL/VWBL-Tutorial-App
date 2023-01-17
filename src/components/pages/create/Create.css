@@ -1,5 +1,5 @@
 .Create-Container {
-  height: calc(100vh - 180px);
+  height: calc(100vh - 160px);
   overflow-y: scroll;
   width: 480px;
   margin: auto;
