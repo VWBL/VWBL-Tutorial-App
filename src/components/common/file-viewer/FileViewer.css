@@ -1,0 +1,13 @@
+.File-Viewer {
+  background-color: black;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Image-Wrapper {
+  width: 85%;
+  height: 85%;
+  display: flex;
+  justify-content: center;
+}
