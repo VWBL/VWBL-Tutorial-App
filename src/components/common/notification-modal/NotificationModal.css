@@ -1,0 +1,63 @@
+.Overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.Notification-Modal-Container {
+  background-color: white;
+  width: 400px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Notification-Modal-Title {
+  font-size: 28px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.Notification-Modal-Body {
+  padding-top: 30px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.Notification-Modal-Button {
+  font-weight: 700;
+  font-size: 16px;
+  padding: 10px 40px;
+  background: #090909;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 48px;
+}
+
+.Notification-Modal-Button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.Notification-Loader {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: solid 3px;
+  border-color: black lightgray lightgray lightgray;
+  position: relative;
+  animation-name: spin;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
