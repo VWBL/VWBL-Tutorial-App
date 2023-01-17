@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { VwblContainer } from '../../../container';
 import { TbWalletOff } from 'react-icons/tb';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
@@ -6,13 +6,14 @@ import clsx from 'clsx';
 import './Home.css';
 import 'react-tabs/style/react-tabs.css';
 import { ItemList } from '../../common';
-import { testNftData } from '../../../utils/test-data/NFT_test_data';
 
 export const Home = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const { userAddress, connectWallet, disconnectWallet } = VwblContainer.useContainer();
-  const mintedNFTs = testNftData.slice(0, 2);
-  const ownedNFTs = testNftData;
+  const { userAddress, mintedNfts, ownedNfts, connectWallet, disconnectWallet, fetchNFTs } =
+    VwblContainer.useContainer();
+  useEffect(() => {
+    fetchNFTs();
+  }, [userAddress]);
   return (
     <div className="Home-Container">
       {userAddress ? (
@@ -33,17 +34,17 @@ export const Home = () => {
               <Tab className={clsx('Tab', tabIndex === 1 && 'isSelectedTab')}>Owned</Tab>
             </TabList>
             <TabPanel className={tabIndex === 0 ? 'Tab-Panel' : 'isNotSelectedTab'}>
-              <ItemList nfts={mintedNFTs} />
+              <ItemList nfts={mintedNfts} />
             </TabPanel>
             <TabPanel className={tabIndex === 1 ? 'Tab-Panel' : 'isNotSelectedTab'}>
-              <ItemList nfts={ownedNFTs} />
+              <ItemList nfts={ownedNfts} />
             </TabPanel>
           </Tabs>
         </>
       ) : (
         <div>
           <button className="Connect-Button" onClick={connectWallet}>
-            Walletを接続してVWBLをはじめる
+            Connect Wallet and dive into VWBL
           </button>
           <div className="Card-Content">
             <div className="Card">
