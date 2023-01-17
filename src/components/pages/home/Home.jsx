@@ -13,7 +13,7 @@ export const Home = () => {
     VwblContainer.useContainer();
   useEffect(() => {
     fetchNFTs();
-  }, [userAddress]);
+  }, [fetchNFTs]);
   return (
     <div className="Home-Container">
       {userAddress ? (
