@@ -1,0 +1,16 @@
+.Back-Button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  background-color: white;
+  border: 1px solid #090909;
+  border-radius: 4px;
+  padding: 6px 16px 6px 8px;
+  font-weight: 700;
+}
+
+.Back-Button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}
