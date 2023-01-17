@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { VwblContainer } from '../../../container';
-import { useDisclosure } from '../../../hook';
+import { useDisclosure } from '../../../hooks';
 import { decryptedImageData } from '../../../utils';
 import { BackButton, CustomLoading, FileViewer, Section, TransferModal } from '../../common';
 import './Detail.css';
@@ -17,33 +17,39 @@ export const Detail = () => {
     setViewingDataType((prev) => !prev);
   };
 
-  const specifyNftData = (id) => {
-    return mintedNfts.find((nft) => nft.id === id) || ownedNfts.find((nft) => nft.id === id);
-  };
+  const specifyNftData = useCallback(
+    (id) => {
+      return mintedNfts.find((nft) => nft.id === id) || ownedNfts.find((nft) => nft.id === id);
+    },
+    [mintedNfts, ownedNfts]
+  );
 
-  const loadNFTByTokenId = (id) => {
-    setTimeout(() => {
-      const targetNft = specifyNftData(id);
-      targetNft.decrypted_image = decryptedImageData;
-      targetNft.owner = userAddress;
-      setLoadedNft(targetNft);
-    }, 3000);
-  };
+  const loadNFTByTokenId = useCallback(
+    (id) => {
+      setTimeout(() => {
+        const targetNft = specifyNftData(id);
+        targetNft.decrypted_image = decryptedImageData;
+        targetNft.owner = userAddress;
+        setLoadedNft(targetNft);
+      }, 3000);
+    },
+    [specifyNftData, userAddress]
+  );
 
   useEffect(() => {
     loadNFTByTokenId(tokenId);
-  }, []);
+  }, [loadNFTByTokenId, tokenId]);
 
   if (!loadedNft) {
     return (
-      <div style={{ height: 'calc(100vh - 180px)' }}>
+      <div style={{ height: 'calc(100vh - 160px)' }}>
         <CustomLoading />
       </div>
     );
   }
 
   return (
-    <div style={{ height: 'calc(100vh - 180px)', display: 'flex' }}>
+    <div style={{ height: 'calc(100vh - 160px)', display: 'flex' }}>
       <TransferModal open={isOpen} onClose={handleOpen} nft={loadedNft} />
       {isViewingThumbnail ? (
         <FileViewer url={loadedNft.image} alt="NFT" height={'100%'} width={'100%'} />
