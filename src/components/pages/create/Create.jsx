@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { FilePreviewer } from '../../common/file-previewer/FIlePreviewer';
 import { VALID_EXTENSIONS, MAX_FILE_SIZE } from '../../../utils';
+import { FilePreviewer, BackButton, NotificationModal } from '../../common';
 import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Create.css';
+import { useDisclosure } from '../../../hook';
 
 export const Create = () => {
   const [file, setFile] = useState();
@@ -12,6 +13,8 @@ export const Create = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
+
+  const { isOpen, handleOpen } = useDisclosure();
 
   const {
     register,
@@ -55,7 +58,8 @@ export const Create = () => {
     setTimeout(() => {
       console.log('mint success!');
       setIsLoading(false);
-    }, 10000);
+      handleOpen();
+    }, 7000);
   };
 
   useEffect(() => {
@@ -95,6 +99,9 @@ export const Create = () => {
 
   return (
     <div className="Create-Container">
+      <div style={{ paddingTop: '60px' }}>
+        <BackButton to={'/'} />
+      </div>
       <div className="Create-Title">VWBL NFTの作成</div>
       <form className="Input-Form" onSubmit={handleSubmit(onSubmit)}>
         <div className="Topic">
@@ -208,7 +215,7 @@ export const Create = () => {
           <button type="submit" className="Mint-Button" disabled={!isChecked}>
             {isLoading ? (
               <div style={{ display: 'flex', textAlign: 'center', justifyContent: 'center', gap: 10 }}>
-                <div className="Loader"></div>
+                <div className="Mint-Loader"></div>
                 NFTを作成中です...
               </div>
             ) : (
@@ -222,6 +229,13 @@ export const Create = () => {
           </span>
         </div>
       </form>
+      <NotificationModal
+        open={isOpen}
+        onClose={handleOpen}
+        title={'Complete'}
+        msg={'Minted your NFT'}
+        isLoading={false}
+      />
     </div>
   );
 };

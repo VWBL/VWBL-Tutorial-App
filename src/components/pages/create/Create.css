@@ -6,7 +6,6 @@
   text-align: start;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  padding-bottom: 120px;
 }
 
 .Create-Container::-webkit-scrollbar {
@@ -64,14 +63,15 @@
 .Checkbox {
   border: 1px solid #d9d9d9;
   border-radius: 2px;
+  accent-color: #090909;
 }
 
-.Loader {
+.Mint-Loader {
   width: 16px;
   height: 16px;
   border-radius: 50%;
-  border: solid 4px;
-  border-color: #ffffff gray gray;
+  border: solid 3px;
+  border-color: white lightgray lightgray lightgray;
   position: relative;
   animation-name: spin;
   animation-duration: 1s;
@@ -109,4 +109,5 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  padding-bottom: 120px;
 }
