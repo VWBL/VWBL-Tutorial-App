@@ -11,7 +11,7 @@ export const NFTItem = ({ nft }) => {
         <div className="NFT-Info">
           <span className="NFT-Title">{nft.name.length >= 24 ? `${nft.name.slice(0, 24)}...` : nft.name}</span>
           <span className="NFT-Description">
-            {nft.description.length >= 140 ? `${nft.description.slice(0, 140)}...` : nft.description}
+            {nft.description.length >= 125 ? `${nft.description.slice(0, 125)}...` : nft.description}
           </span>
         </div>
       </div>
