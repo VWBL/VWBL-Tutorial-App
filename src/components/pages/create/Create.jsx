@@ -196,7 +196,7 @@ export const Create = () => {
           <input
             type="checkbox"
             className="Checkbox"
-            isChecked={isChecked}
+            checked={isChecked}
             onChange={(e) => setIsChecked(e.target.checked)}
           />
           <span style={{ fontSize: '12px' }}>
