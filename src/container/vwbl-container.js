@@ -71,6 +71,7 @@ const useVWBL = () => {
 
   return {
     userAddress,
+    web3,
     vwbl,
     connectWallet,
     disconnectWallet,
