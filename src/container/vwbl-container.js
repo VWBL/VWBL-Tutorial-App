@@ -3,7 +3,6 @@ import { useState } from 'react';
 
 const useVWBL = () => {
   const [userAddress, setUserAddress] = useState('');
-  const [vwbl, setVwbl] = useState();
 
   // Lesson-2
   const connectWallet = () => {
@@ -20,7 +19,6 @@ const useVWBL = () => {
 
   return {
     userAddress,
-    vwbl,
     connectWallet,
     disconnectWallet,
     initVwbl,
