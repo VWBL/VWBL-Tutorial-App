@@ -2,18 +2,30 @@ import React, { useEffect, useState } from 'react';
 import { VwblContainer } from '../../../container';
 import { TbWalletOff } from 'react-icons/tb';
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
+import { ItemList } from '../../common';
+import { testNfts } from '../../../utils';
 import clsx from 'clsx';
 import './Home.css';
 import 'react-tabs/style/react-tabs.css';
-import { ItemList } from '../../common';
 
 export const Home = () => {
   const [tabIndex, setTabIndex] = useState(0);
-  const { userAddress, mintedNfts, ownedNfts, connectWallet, disconnectWallet, fetchNFTs } =
-    VwblContainer.useContainer();
+  const [mintedNfts, setMintedNfts] = useState();
+  const [ownedNfts, setOwnedNfts] = useState();
+  const { userAddress, connectWallet, disconnectWallet } = VwblContainer.useContainer();
+
+  // Lesson-5
+  const fetchNfts = () => {
+    setTimeout(() => {
+      setMintedNfts(testNfts.slice(0, 2));
+      setOwnedNfts(testNfts);
+    }, 2000);
+  };
+
   useEffect(() => {
-    fetchNFTs();
-  }, [fetchNFTs]);
+    fetchNfts();
+  }, [userAddress]);
+
   return (
     <div className="Home-Container">
       {userAddress ? (

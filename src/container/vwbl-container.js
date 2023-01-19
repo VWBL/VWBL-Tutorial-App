@@ -1,35 +1,29 @@
 import { createContainer } from 'unstated-next';
 import { useState } from 'react';
-import { testNfts } from '../utils';
 
 const useVWBL = () => {
   const [userAddress, setUserAddress] = useState('');
-  const [mintedNfts, setMintedNfts] = useState();
-  const [ownedNfts, setOwnedNfts] = useState();
+  const [vwbl, setVwbl] = useState();
+
+  // Lesson-2
   const connectWallet = () => {
     setUserAddress('0x0000000000000000000000000000000000000000');
   };
 
+  // Lesson-2
   const disconnectWallet = () => {
     setUserAddress('');
-    setMintedNfts();
-    setOwnedNfts();
   };
 
-  const fetchNFTs = () => {
-    setTimeout(() => {
-      setMintedNfts(testNfts.slice(0, 2));
-      setOwnedNfts(testNfts);
-    }, 2000);
-  };
+  // Lesson-3
+  const initVwbl = () => {};
 
   return {
     userAddress,
-    mintedNfts,
-    ownedNfts,
+    vwbl,
     connectWallet,
     disconnectWallet,
-    fetchNFTs,
+    initVwbl,
   };
 };
 

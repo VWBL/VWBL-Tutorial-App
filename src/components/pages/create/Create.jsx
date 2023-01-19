@@ -13,8 +13,24 @@ export const Create = () => {
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
-
   const { isOpen, handleOpen } = useDisclosure();
+
+  // Lesson-4
+  const mintNft = (data) => {
+    if (Object.keys(errors).length !== 0) {
+      // エラーを確認
+      console.log('errors', errors);
+      return;
+    }
+    setIsLoading(true);
+    console.log('submitted data', data);
+    console.log('mint start...');
+    setTimeout(() => {
+      console.log('mint success!');
+      setIsLoading(false);
+      handleOpen();
+    }, 7000);
+  };
 
   const {
     register,
@@ -45,22 +61,6 @@ export const Create = () => {
     setThumbnailUrl('');
     setThumbnail(undefined);
   }, []);
-
-  const onSubmit = (data) => {
-    if (Object.keys(errors).length !== 0) {
-      // エラーを確認
-      console.log('errors', errors);
-      return;
-    }
-    setIsLoading(true);
-    console.log('submitted data', data);
-    console.log('mint start...');
-    setTimeout(() => {
-      console.log('mint success!');
-      setIsLoading(false);
-      handleOpen();
-    }, 7000);
-  };
 
   useEffect(() => {
     let fileReaderForFile;
@@ -103,7 +103,7 @@ export const Create = () => {
         <BackButton to={'/'} />
       </div>
       <div className="Create-Title">VWBL NFTの作成</div>
-      <form className="Input-Form" onSubmit={handleSubmit(onSubmit)}>
+      <form className="Input-Form" onSubmit={handleSubmit(mintNft)}>
         <div className="Topic">
           <label className="Topic-Title" title="Asset" htmlFor="asset">
             NFTデータ
