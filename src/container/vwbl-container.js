@@ -66,7 +66,6 @@ const useVWBL = () => {
     });
     // vwblインスタンスをstateを保存
     setVwbl(vwblInstance);
-    console.log(vwblInstance);
   };
 
   return {
