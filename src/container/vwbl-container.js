@@ -33,7 +33,6 @@ const useVWBL = () => {
         });
       }
 
-      // initVwblを実行してvwblインスタンスを作成する
       initVwbl(web3);
     } catch (error) {
       if (error.code === 4001) {
@@ -48,13 +47,10 @@ const useVWBL = () => {
   const disconnectWallet = () => {
     setUserAddress('');
     setWeb3(undefined);
-    // vwblインスタンスのstateをリセット
     setVwbl(undefined);
   };
 
-  // Lesson-3
   const initVwbl = (web3) => {
-    // vwblインスタンスの作成
     const vwblInstance = new VWBL({
       web3,
       contractAddress: process.env.REACT_APP_NFT_CONTRACT_ADDRESS,
@@ -64,9 +60,7 @@ const useVWBL = () => {
       uploadMetadataType: UploadMetadataType.IPFS,
       ipfsNftStorageKey: process.env.REACT_APP_NFT_STORAGE_KEY,
     });
-    // vwblインスタンスをstateを保存
     setVwbl(vwblInstance);
-    console.log(vwblInstance);
   };
 
   return {
