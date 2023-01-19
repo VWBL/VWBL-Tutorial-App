@@ -48,6 +48,8 @@ const useVWBL = () => {
   const disconnectWallet = () => {
     setUserAddress('');
     setWeb3(undefined);
+    // vwblインスタンスのstateをリセット
+    setVwbl(undefined);
   };
 
   // Lesson-3
