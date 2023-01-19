@@ -15,7 +15,7 @@ export const Create = () => {
   const [isChecked, setIsChecked] = useState(false);
   const { isOpen, handleOpen } = useDisclosure();
 
-  // Lesson-5
+  // Lesson-4
   const mintNft = (data) => {
     if (Object.keys(errors).length !== 0) {
       // エラーを確認
