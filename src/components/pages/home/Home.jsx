@@ -14,7 +14,7 @@ export const Home = () => {
   const [ownedNfts, setOwnedNfts] = useState();
   const { userAddress, connectWallet, disconnectWallet } = VwblContainer.useContainer();
 
-  // Lesson-4
+  // Lesson-5
   const fetchNfts = () => {
     setTimeout(() => {
       setMintedNfts(testNfts.slice(0, 2));
