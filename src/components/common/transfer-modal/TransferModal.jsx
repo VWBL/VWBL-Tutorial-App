@@ -1,28 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
 import { FileViewer } from '../file-viewer/FileViewer';
 import { NotificationModal } from '../notification-modal/NotificationModal';
 import { ErrorMessage } from '@hookform/error-message';
 import './TransferModal.css';
+import { useTransferNft } from '../../../hooks';
 
 export const TransferModal = ({ open, onClose, nft }) => {
-  const [isComplete, setIsComplete] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-
+  const { isComplete, isLoading, transferNft, handleComplete } = useTransferNft();
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm();
 
-  const transferNft = (data) => {
-    console.log('submitted data', data);
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-      setIsComplete(true);
-    }, 4000); //modalを出す
-  };
   if (open && !isLoading && !isComplete) {
     return (
       <div className="Overlay">
@@ -80,7 +71,7 @@ export const TransferModal = ({ open, onClose, nft }) => {
       <NotificationModal
         open={isComplete}
         onClose={() => {
-          setIsComplete(false);
+          handleComplete();
           onClose();
         }}
         title={'Complete'}
