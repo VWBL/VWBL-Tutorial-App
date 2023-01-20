@@ -42,26 +42,27 @@ export const Home = () => {
 
         // 最新のNFTが一覧の上に来るように順番を入れ替えて保存
         setMintedNfts(mintedNfts.reverse());
+      }
 
-        // 所有しているNFTのtokenIdの配列を取得
-        const ownedTokenIds = await vwbl.getOwnTokenIds();
+      // 所有しているNFTのtokenIdの配列を取得
+      const ownedTokenIds = await vwbl.getOwnTokenIds();
 
-        // ownedTokenIds内に値が存在する場合
-        if (ownedTokenIds.length) {
-          // 取得したメタデータを保存する配列を定義
-          const owendNfts = [];
+      // ownedTokenIds内に値が存在する場合
+      if (ownedTokenIds.length) {
+        // 取得したメタデータを保存する配列を定義
+        const owendNfts = [];
 
-          // ownedTokenIdsをもとにループ処理
-          for (const tokenId of ownedTokenIds) {
-            // tokenIdからNFTメタデータを取得
-            const metadata = await vwbl.getMetadata(tokenId);
+        // ownedTokenIdsをもとにループ処理
+        for (const tokenId of ownedTokenIds) {
+          // tokenIdからNFTメタデータを取得
+          const metadata = await vwbl.getMetadata(tokenId);
 
-            // metadataが存在する場合はowendNftsに追加
-            if (metadata) owendNfts.push(metadata);
-          }
-
-          setOwnedNfts(owendNfts.reverse());
+          // metadataが存在する場合はowendNftsに追加
+          if (metadata) owendNfts.push(metadata);
         }
+
+        // 最新のNFTが一覧の上に来るように順番を入れ替えて保存
+        setOwnedNfts(owendNfts.reverse());
       }
     } catch (error) {
       // エラー内容を表示
