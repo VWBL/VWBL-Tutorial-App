@@ -24,9 +24,10 @@ export const Create = () => {
     }
     setIsLoading(true);
     if (!web3 || !vwbl) {
-      alert('Now your wallet is connected. Please try again.');
+      alert('Your wallet is not connected. Please try again.');
       setIsLoading(false);
       await connectWallet();
+      return;
     }
     const { asset, thumbnail, title, description } = data;
     try {
