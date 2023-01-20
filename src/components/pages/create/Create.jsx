@@ -30,9 +30,10 @@ export const Create = () => {
 
     // web3またはvwblインスタンスがundefinedの場合
     if (!web3 || !vwbl) {
-      alert('Now your wallet is connected. Please try again.');
+      alert('Your wallet is not connected. Please try again.');
       setIsLoading(false);
       await connectWallet();
+      return;
     }
 
     // 各入力データを抽出
