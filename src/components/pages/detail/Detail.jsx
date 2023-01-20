@@ -2,9 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { VwblContainer } from '../../../container';
 import { useDisclosure } from '../../../hooks';
-import { decryptedImageData } from '../../../utils';
 import { BackButton, CustomLoading, FileViewer, Section, TransferModal } from '../../common';
-import { testNfts } from '../../../utils';
 import './Detail.css';
 
 export const Detail = () => {
@@ -15,32 +13,19 @@ export const Detail = () => {
   const tokenId = Number(useParams().id);
   const navigate = useNavigate();
 
-  // Lesson-6
   const fechDecryptedNftByTokenId = async (id) => {
-    // vwblが存在しない場合
     if (!vwbl) {
       console.log('Now your wallet is not connected. Please connect your wallet.');
       return;
     }
     try {
-      // VWBL Networkに対する署名を確認
       if (!vwbl.signature) {
         await vwbl.sign();
       }
-
-      // 復号データ、ownerアドレスを含むメタデータを取得
       const decryptedNft = await vwbl.getTokenById(id);
-
-      // decryptedNftを開発者コンソールに表示
-      console.log(decryptedNft);
-
-      // decryptedNftを保存
       setDecryptedNft(decryptedNft);
     } catch (error) {
-      // ホーム画面に遷移
       navigate('/');
-
-      // エラー内容を表示
       console.log(error.message);
     }
   };
