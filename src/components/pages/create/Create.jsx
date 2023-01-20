@@ -17,48 +17,30 @@ export const Create = () => {
   const { isOpen, handleOpen } = useDisclosure();
   const { web3, vwbl, connectWallet } = VwblContainer.useContainer();
 
-  // Lesson-4
   const mintNft = async (data) => {
     if (Object.keys(errors).length !== 0) {
-      // エラーを確認
       console.log('errors', errors);
       return;
     }
-
-    // Loading開始
     setIsLoading(true);
-
-    // web3またはvwblインスタンスがundefinedの場合
     if (!web3 || !vwbl) {
       alert('Now your wallet is connected. Please try again.');
       setIsLoading(false);
       await connectWallet();
     }
-
-    // 各入力データを抽出
     const { asset, thumbnail, title, description } = data;
-
     try {
-      // VWBLネットワークに対する署名を確認
       if (!vwbl.signature) {
         await vwbl.sign();
         return;
       }
-
-      // VWBL NFTを発行
       await vwbl.managedCreateTokenForIPFS(title, description, asset[0], thumbnail[0], 0);
 
-      // Loading終了
       setIsLoading(false);
-
-      // Completeモーダルを表示
       handleOpen();
     } catch (error) {
-      // エラー内容を表示
       console.log(error);
       alert(error.message);
-
-      // Loading終了
       setIsLoading(false);
     }
   };
