@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { VwblContainer } from '../../../container';
 import { useDisclosure } from '../../../hooks';
 import { decryptedImageData } from '../../../utils';
@@ -10,18 +10,39 @@ import './Detail.css';
 export const Detail = () => {
   const [decryptedNft, setDecryptedNft] = useState();
   const [isViewingThumbnail, setViewingDataType] = useState(true);
-  const { userAddress } = VwblContainer.useContainer();
+  const { userAddress, vwbl } = VwblContainer.useContainer();
   const { isOpen, handleOpen } = useDisclosure();
   const tokenId = Number(useParams().id);
+  const navigate = useNavigate();
 
   // Lesson-6
-  const fechDecryptedNftByTokenId = (id) => {
-    setTimeout(() => {
-      const targetNft = testNfts.find((nft) => nft.id === id);
-      targetNft.decrypted_image = decryptedImageData;
-      targetNft.owner = userAddress;
-      setDecryptedNft(targetNft);
-    }, 3000);
+  const fechDecryptedNftByTokenId = async (id) => {
+    // vwblが存在しない場合
+    if (!vwbl) {
+      console.log('Now your wallet is not connected. Please connect your wallet.');
+      return;
+    }
+    try {
+      // VWBL Networkに対する署名を確認
+      if (!vwbl.signature) {
+        await vwbl.sign();
+      }
+
+      // 復号データ、ownerアドレスを含むメタデータを取得
+      const decryptedNft = await vwbl.getTokenById(id);
+
+      // decryptedNftを開発者コンソールに表示
+      console.log(decryptedNft);
+
+      // decryptedNftを保存
+      setDecryptedNft(decryptedNft);
+    } catch (error) {
+      // ホーム画面に遷移
+      navigate('/');
+
+      // エラー内容を表示
+      console.log(error.message);
+    }
   };
 
   const handleViewData = () => {
@@ -30,7 +51,7 @@ export const Detail = () => {
 
   useEffect(() => {
     fechDecryptedNftByTokenId(tokenId);
-  }, [fechDecryptedNftByTokenId, tokenId]);
+  }, []);
 
   if (!decryptedNft) {
     return (
@@ -46,7 +67,7 @@ export const Detail = () => {
       {isViewingThumbnail ? (
         <FileViewer url={decryptedNft.image} alt="NFT" height={'100%'} width={'100%'} />
       ) : (
-        <FileViewer url={decryptedNft.decrypted_image} alt="NFT" height={'100%'} width={'100%'} />
+        <FileViewer url={decryptedNft.ownDataBase64[0]} alt="NFT" height={'100%'} width={'100%'} />
       )}
       <div className="Detail-Container">
         <div className="Data-Wrapper">
