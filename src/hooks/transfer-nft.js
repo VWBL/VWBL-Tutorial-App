@@ -9,42 +9,26 @@ export const useTransferNft = () => {
   const tokenId = Number(useParams().id);
   const navigate = useNavigate();
 
-  // Lesson-7
   const transferNft = async (data) => {
-    // vwblが存在しない場合
     if (!vwbl) {
       console.log('Now your wallet is not connected. Please connect your wallet.');
       return;
     }
-
-    // フォームから受け取ったデータを抽出
     const { address } = data;
-
-    //　Loadingモーダルを表示する
     setIsLoading(true);
 
     try {
-      // VWBL NFTを送信
       await vwbl.safeTransfer(address, tokenId);
-
-      //　Loadingモーダルを閉じる
-      setIsLoading(true);
-
-      // 送信完了モーダルを表示する
+      setIsLoading(false);
       setIsComplete(true);
     } catch (error) {
-      // エラー内容の表示
       console.log(error);
-
-      //　Loadingモーダルを閉じる
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
   const handleComplete = () => {
     setIsComplete((prev) => !prev);
-
-    // ホーム画面へ遷移させる
     navigate('/');
   };
 
