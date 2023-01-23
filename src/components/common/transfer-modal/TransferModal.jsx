@@ -18,7 +18,7 @@ export const TransferModal = ({ open, onClose, nft }) => {
     return (
       <div className="Overlay">
         <div className="Transfer-Modal-Container">
-          <FileViewer url={nft.decrypted_image} alt="NFT" height={'300px'} width={'100%'} />
+          <FileViewer url={nft.ownDataBase64[0]} alt="NFT" height={'300px'} width={'100%'} />
           <form style={{ padding: '40px' }} onSubmit={handleSubmit(transferNft)}>
             <div className="Transfer-Modal-Actions">
               <Section title="Title" data={nft.name} />
