@@ -31,13 +31,13 @@ export const useTransferNft = () => {
       setIsLoading(true);
 
       // 送信完了モーダルを表示する
-      setIsComplete(true);
+      setIsComplete(false);
     } catch (error) {
       // エラー内容の表示
       console.log(error);
 
       //　Loadingモーダルを閉じる
-      setIsLoading(true);
+      setIsLoading(false);
     }
   };
 
