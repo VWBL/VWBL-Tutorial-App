@@ -66,7 +66,7 @@ export const Home = () => {
       }
     } catch (error) {
       // エラー内容を表示
-      console.log(error);
+      console.error(error);
     }
   };
 
