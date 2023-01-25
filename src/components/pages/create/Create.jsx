@@ -56,7 +56,7 @@ export const Create = () => {
       handleOpen();
     } catch (error) {
       // エラー内容を表示
-      console.log(error);
+      console.error(error);
       alert(error.message);
 
       // Loading終了
