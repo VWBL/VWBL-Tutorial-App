@@ -40,7 +40,7 @@ export const Create = () => {
       setIsLoading(false);
       handleOpen();
     } catch (error) {
-      console.log(error);
+      console.error(error);
       alert(error.message);
       setIsLoading(false);
     }
