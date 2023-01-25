@@ -26,7 +26,7 @@ export const Detail = () => {
       setDecryptedNft(decryptedNft);
     } catch (error) {
       navigate('/');
-      console.log(error.message);
+      console.error(error);
     }
   };
 

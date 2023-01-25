@@ -22,7 +22,7 @@ export const useTransferNft = () => {
       setIsLoading(false);
       setIsComplete(true);
     } catch (error) {
-      console.log(error);
+      console.error(error);
       setIsLoading(false);
     }
   };
