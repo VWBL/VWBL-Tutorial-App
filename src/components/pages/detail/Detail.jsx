@@ -41,7 +41,7 @@ export const Detail = () => {
       navigate('/');
 
       // エラー内容を表示
-      console.log(error.message);
+      console.error(error.message);
     }
   };
 
