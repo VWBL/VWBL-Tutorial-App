@@ -34,7 +34,7 @@ export const useTransferNft = () => {
       setIsComplete(false);
     } catch (error) {
       // エラー内容の表示
-      console.log(error);
+      console.error(error);
 
       //　Loadingモーダルを閉じる
       setIsLoading(false);

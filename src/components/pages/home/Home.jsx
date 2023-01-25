@@ -40,7 +40,7 @@ export const Home = () => {
         setOwnedNfts(owendNfts.reverse());
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
