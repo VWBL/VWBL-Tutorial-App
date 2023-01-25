@@ -21,7 +21,7 @@ export const Create = () => {
   const mintNft = async (data) => {
     if (Object.keys(errors).length !== 0) {
       // エラーを確認
-      console.log('errors', errors);
+      console.error('errors', errors);
       return;
     }
 
