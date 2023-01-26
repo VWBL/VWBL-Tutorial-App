@@ -70,6 +70,7 @@ export const Home = () => {
     }
   };
 
+  // Lesson-5
   useEffect(() => {
     fetchNfts();
   }, [vwbl]);
