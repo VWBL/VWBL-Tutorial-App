@@ -22,6 +22,7 @@ export const Home = () => {
     }, 2000);
   };
 
+  // Lesson-5
   useEffect(() => {
     fetchNfts();
   }, [userAddress]);
