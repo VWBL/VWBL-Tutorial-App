@@ -30,7 +30,7 @@ export const Detail = () => {
 
   useEffect(() => {
     fechDecryptedNftByTokenId(tokenId);
-  }, [fechDecryptedNftByTokenId, tokenId]);
+  }, []);
 
   if (!decryptedNft) {
     return (
