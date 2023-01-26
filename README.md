@@ -22,4 +22,4 @@ Let's become a more advanced NFT engineer with a VWBL NFT, which allows only tho
 
 - Lesson-0：start here for step-by-step learning
 
-- Lesson-1 ~ Lesson-7：each branch is a completed version of each lesson in the above materials.
+- Lesson-1 ~ Lesson-7：a completed version of each lesson in the above materials.
