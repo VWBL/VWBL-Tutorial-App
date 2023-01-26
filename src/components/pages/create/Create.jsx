@@ -33,7 +33,6 @@ export const Create = () => {
     try {
       if (!vwbl.signature) {
         await vwbl.sign();
-        return;
       }
       await vwbl.managedCreateTokenForIPFS(title, description, asset[0], thumbnail[0], 0);
 
