@@ -43,7 +43,6 @@ export const Create = () => {
       // VWBLネットワークに対する署名を確認
       if (!vwbl.signature) {
         await vwbl.sign();
-        return;
       }
 
       // VWBL NFTを発行
