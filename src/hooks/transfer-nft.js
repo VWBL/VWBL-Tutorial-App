@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { VwblContainer } from '../container';
-import { useParams, useNavigate } from 'react-router-dom';
+import { VwblContainer } from '../container'; // この１行を追加
+import { useParams, useNavigate } from 'react-router-dom'; // この１行を追加
 
 export const useTransferNft = () => {
   const [isComplete, setIsComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const { vwbl } = VwblContainer.useContainer();
-  const tokenId = Number(useParams().id);
-  const navigate = useNavigate();
+  const { vwbl } = VwblContainer.useContainer(); //この１行を追加
+  const tokenId = Number(useParams().id); //この１行を追加
+  const navigate = useNavigate(); //この１行を追加
 
   // Lesson-7
   const transferNft = async (data) => {
