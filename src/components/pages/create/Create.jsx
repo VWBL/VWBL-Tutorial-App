@@ -19,12 +19,6 @@ export const Create = () => {
 
   // Lesson-4
   const mintNft = async (data) => {
-    if (Object.keys(errors).length !== 0) {
-      // エラーを確認
-      console.error('errors', errors);
-      return;
-    }
-
     // Loading開始
     setIsLoading(true);
 
