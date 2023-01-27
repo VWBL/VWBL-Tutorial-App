@@ -14,11 +14,10 @@ export const Detail = () => {
   const navigate = useNavigate();
 
   const fechDecryptedNftByTokenId = async (id) => {
-    if (!vwbl) {
-      console.log('Now your wallet is not connected. Please connect your wallet.');
-      return;
-    }
     try {
+      if (!vwbl) {
+        throw new Error('Now your wallet is not connected. Please connect your wallet.');
+      }
       if (!vwbl.signature) {
         await vwbl.sign();
       }
