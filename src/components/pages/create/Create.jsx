@@ -17,11 +17,6 @@ export const Create = () => {
 
   // Lesson-4
   const mintNft = (data) => {
-    if (Object.keys(errors).length !== 0) {
-      // エラーを確認
-      console.log('errors', errors);
-      return;
-    }
     setIsLoading(true);
     console.log('submitted data', data);
     console.log('mint start...');
