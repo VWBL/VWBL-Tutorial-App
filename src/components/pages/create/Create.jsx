@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Create.css';
 import { useDisclosure } from '../../../hooks';
-import { VwblContainer } from '../../../container';
+import { VwblContainer } from '../../../container'; // この１行を追加
 
 export const Create = () => {
   const [file, setFile] = useState();
@@ -15,7 +15,7 @@ export const Create = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const { isOpen, handleOpen } = useDisclosure();
-  const { web3, vwbl, connectWallet } = VwblContainer.useContainer();
+  const { web3, vwbl, connectWallet } = VwblContainer.useContainer(); // この１行を追加
 
   // Lesson-4
   const mintNft = async (data) => {
