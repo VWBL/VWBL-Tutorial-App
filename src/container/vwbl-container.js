@@ -1,10 +1,10 @@
 import { createContainer } from 'unstated-next';
 import { useState } from 'react';
-import Web3 from 'web3';
+import Web3 from 'web3'; // この1行を追加
 
 const useVWBL = () => {
   const [userAddress, setUserAddress] = useState('');
-  const [web3, setWeb3] = useState();
+  const [web3, setWeb3] = useState(); // この1行を追加
 
   // Lesson-2
   const connectWallet = async () => {
@@ -69,7 +69,7 @@ const useVWBL = () => {
 
   return {
     userAddress,
-    web3,
+    web3, // この1行を追加
     connectWallet,
     disconnectWallet,
     initVwbl,
