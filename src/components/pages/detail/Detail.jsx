@@ -1,28 +1,26 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom'; // useNavigateを追加
 import { VwblContainer } from '../../../container';
 import { useDisclosure } from '../../../hooks';
-import { decryptedImageData } from '../../../utils';
 import { BackButton, CustomLoading, FileViewer, Section, TransferModal } from '../../common';
-import { testNfts } from '../../../utils';
 import './Detail.css';
 
 export const Detail = () => {
   const [decryptedNft, setDecryptedNft] = useState();
   const [isViewingThumbnail, setViewingDataType] = useState(true);
-  const { userAddress, vwbl } = VwblContainer.useContainer();
+  const { userAddress, vwbl } = VwblContainer.useContainer(); // vwblを追加
   const { isOpen, handleOpen } = useDisclosure();
   const tokenId = Number(useParams().id);
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // navigateを定義
 
   // Lesson-6
   const fechDecryptedNftByTokenId = async (id) => {
-    // vwblが存在しない場合
-    if (!vwbl) {
-      console.log('Now your wallet is not connected. Please connect your wallet.');
-      return;
-    }
     try {
+      // vwblが存在しない場合
+      if (!vwbl) {
+        throw new Error('Now your wallet is not connected. Please connect your wallet.');
+      }
+
       // VWBL Networkに対する署名を確認
       if (!vwbl.signature) {
         await vwbl.sign();
