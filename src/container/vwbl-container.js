@@ -1,12 +1,12 @@
 import { createContainer } from 'unstated-next';
 import { useState } from 'react';
 import Web3 from 'web3';
-import { ManageKeyType, UploadContentType, UploadMetadataType, VWBL } from 'vwbl-sdk';
+import { ManageKeyType, UploadContentType, UploadMetadataType, VWBL } from 'vwbl-sdk'; //この１行を追加
 
 const useVWBL = () => {
   const [userAddress, setUserAddress] = useState('');
   const [web3, setWeb3] = useState();
-  const [vwbl, setVwbl] = useState();
+  const [vwbl, setVwbl] = useState(); // この１行を追加
 
   const connectWallet = async () => {
     try {
@@ -17,7 +17,7 @@ const useVWBL = () => {
         console.log('MetaMask is installed!', ethereum);
       }
 
-      await ethereum.enable();
+      await ethereum.send('eth_requestAccounts');
       const web3 = new Web3(ethereum);
       const accounts = await web3.eth.getAccounts();
       const currentAccount = accounts[0];
@@ -71,7 +71,7 @@ const useVWBL = () => {
   return {
     userAddress,
     web3,
-    vwbl,
+    vwbl, // この１行を追加
     connectWallet,
     disconnectWallet,
     initVwbl,
