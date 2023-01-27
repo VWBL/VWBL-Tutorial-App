@@ -18,10 +18,6 @@ export const Create = () => {
   const { web3, vwbl, connectWallet } = VwblContainer.useContainer();
 
   const mintNft = async (data) => {
-    if (Object.keys(errors).length !== 0) {
-      console.error('errors', errors);
-      return;
-    }
     setIsLoading(true);
     if (!web3 || !vwbl) {
       alert('Your wallet is not connected. Please try again.');
