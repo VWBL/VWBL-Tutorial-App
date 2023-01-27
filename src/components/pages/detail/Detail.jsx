@@ -13,7 +13,7 @@ export const Detail = () => {
   const tokenId = Number(useParams().id);
   const navigate = useNavigate();
 
-  const fechDecryptedNftByTokenId = async (id) => {
+  const fetchDecryptedNftByTokenId = async (id) => {
     try {
       if (!vwbl) {
         throw new Error('Now your wallet is not connected. Please connect your wallet.');
@@ -34,7 +34,7 @@ export const Detail = () => {
   };
 
   useEffect(() => {
-    fechDecryptedNftByTokenId(tokenId);
+    fetchDecryptedNftByTokenId(tokenId);
   }, []);
 
   if (!decryptedNft) {
