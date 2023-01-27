@@ -65,7 +65,8 @@ export const Detail = () => {
       {isViewingThumbnail ? (
         <FileViewer url={decryptedNft.image} alt="NFT" height={'100%'} width={'100%'} />
       ) : (
-        <FileViewer url={decryptedNft.ownDataBase64[0]} alt="NFT" height={'100%'} width={'100%'} />
+        // Lesson-6
+        <FileViewer url={decryptedNft.ownDataBase64[0]} alt="NFT" height={'100%'} width={'100%'} /> // urlにownDataBase64[0]を指定
       )}
       <div className="Detail-Container">
         <div className="Data-Wrapper">
