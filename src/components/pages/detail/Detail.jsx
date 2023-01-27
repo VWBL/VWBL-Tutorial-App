@@ -14,7 +14,7 @@ export const Detail = () => {
   const navigate = useNavigate(); // navigateを定義
 
   // Lesson-6
-  const fechDecryptedNftByTokenId = async (id) => {
+  const fetchDecryptedNftByTokenId = async (id) => {
     try {
       // vwblが存在しない場合
       if (!vwbl) {
@@ -48,7 +48,7 @@ export const Detail = () => {
   };
 
   useEffect(() => {
-    fechDecryptedNftByTokenId(tokenId);
+    fetchDecryptedNftByTokenId(tokenId);
   }, []);
 
   if (!decryptedNft) {
