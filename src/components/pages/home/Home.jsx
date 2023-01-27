@@ -12,7 +12,7 @@ export const Home = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [mintedNfts, setMintedNfts] = useState();
   const [ownedNfts, setOwnedNfts] = useState();
-  const { userAddress, vwbl, web3, connectWallet, disconnectWallet } = VwblContainer.useContainer();
+  const { userAddress, vwbl, web3, connectWallet, disconnectWallet } = VwblContainer.useContainer(); // web3,vwblを追加
 
   // Lesson-5
   const fetchNfts = async () => {
@@ -73,7 +73,7 @@ export const Home = () => {
   // Lesson-5
   useEffect(() => {
     fetchNfts();
-  }, [vwbl]);
+  }, [vwbl]); // ここを修正
 
   return (
     <div className="Home-Container">
