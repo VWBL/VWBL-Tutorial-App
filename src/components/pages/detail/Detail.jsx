@@ -15,7 +15,7 @@ export const Detail = () => {
   const tokenId = Number(useParams().id);
 
   // Lesson-6
-  const fechDecryptedNftByTokenId = (id) => {
+  const fetchDecryptedNftByTokenId = (id) => {
     setTimeout(() => {
       const targetNft = testNfts.find((nft) => nft.id === id);
       targetNft.decrypted_image = decryptedImageData;
@@ -29,7 +29,7 @@ export const Detail = () => {
   };
 
   useEffect(() => {
-    fechDecryptedNftByTokenId(tokenId);
+    fetchDecryptedNftByTokenId(tokenId);
   }, []);
 
   if (!decryptedNft) {
@@ -46,6 +46,7 @@ export const Detail = () => {
       {isViewingThumbnail ? (
         <FileViewer url={decryptedNft.image} alt="NFT" height={'100%'} width={'100%'} />
       ) : (
+        // Lesson-6
         <FileViewer url={decryptedNft.decrypted_image} alt="NFT" height={'100%'} width={'100%'} />
       )}
       <div className="Detail-Container">
