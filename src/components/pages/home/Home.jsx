@@ -73,7 +73,7 @@ export const Home = () => {
   // Lesson-5
   useEffect(() => {
     fetchNfts();
-  }, [vwbl]); // ここを修正
+  }, [vwbl]); // userAddressを削除してvwblを指定
 
   return (
     <div className="Home-Container">
