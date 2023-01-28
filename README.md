@@ -23,3 +23,9 @@ Let's become a more advanced NFT engineer with a VWBL NFT, which allows only tho
 - Lesson-0：start here for step-by-step learning
 
 - Lesson-1 ~ Lesson-7：a completed version of each lesson in the above materials.
+
+### refference
+
+- [https://www.npmjs.com/package/web3](https://www.npmjs.com/package/web3)
+- [https://www.npmjs.com/package/vwbl-sdk](https://www.npmjs.com/package/vwbl-sdk)
+- [vwbl-protocol docs](https://docs.vwbl-protocol.org/end-point-for-vwbl)
