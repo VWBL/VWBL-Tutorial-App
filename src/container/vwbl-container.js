@@ -17,7 +17,7 @@ const useVWBL = () => {
         console.log('MetaMask is installed!', ethereum);
       }
 
-      await ethereum.send('eth_requestAccounts');
+      await ethereum.request({ method: 'eth_requestAccounts' });
       const web3 = new Web3(ethereum);
       const accounts = await web3.eth.getAccounts();
       const currentAccount = accounts[0];
