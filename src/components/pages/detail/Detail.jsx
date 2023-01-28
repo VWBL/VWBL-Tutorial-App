@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { VwblContainer } from '../../../container';
 import { useDisclosure } from '../../../hooks';
 import { decryptedImageData } from '../../../utils';
@@ -10,9 +10,10 @@ import './Detail.css';
 export const Detail = () => {
   const [decryptedNft, setDecryptedNft] = useState();
   const [isViewingThumbnail, setViewingDataType] = useState(true);
-  const { userAddress } = VwblContainer.useContainer();
+  const { userAddress } = VwblContainer.useContainer(); /* vwblを追加 */
   const { isOpen, handleOpen } = useDisclosure();
   const tokenId = Number(useParams().id);
+  const navigate = useNavigate();
 
   // Lesson-6
   const fetchDecryptedNftByTokenId = (id) => {
@@ -23,6 +24,25 @@ export const Detail = () => {
       setDecryptedNft(targetNft);
     }, 3000);
   };
+
+  // const fetchDecryptedNftByTokenId = async (id) => {
+  //   try {
+  //     // vwblが存在しない場合
+  //     if (!vwbl) {
+  //       throw new Error('Now your wallet is not connected. Please connect your wallet.');
+  //     }
+
+  //     /* VWBL Networkに対する署名を確認 */
+
+  //     /* 復号データ、ownerアドレスを含むメタデータを取得 */
+
+  //     console.log(decryptedNft);
+  //     setDecryptedNft(decryptedNft);
+  //   } catch (error) {
+  //     navigate('/');
+  //     console.error(error);
+  //   }
+  // };
 
   const handleViewData = () => {
     setViewingDataType((prev) => !prev);

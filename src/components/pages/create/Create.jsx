@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
 import './Create.css';
 import { useDisclosure } from '../../../hooks';
+import { VwblContainer } from '../../../container';
 
 export const Create = () => {
   const [file, setFile] = useState();
@@ -14,6 +15,7 @@ export const Create = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const { isOpen, handleOpen } = useDisclosure();
+  /* VwblContainerから web3,vwbl,connectWallet を取得する */
 
   // Lesson-4
   const mintNft = (data) => {
@@ -26,6 +28,31 @@ export const Create = () => {
       handleOpen();
     }, 7000);
   };
+
+  // const mintNft = async (data) => {
+  //   setIsLoading(true);
+  //   if (!web3 || !vwbl) {
+  //     alert('Your wallet is not connected. Please try again.');
+  //     setIsLoading(false);
+  //     await connectWallet();
+  //     return;
+  //   }
+
+  //   const { asset, thumbnail, title, description } = data;
+
+  //   try {
+  //     /* VWBLネットワークに対する署名を確認 */
+
+  //     /* VWBL NFTを発行 */
+
+  //     setIsLoading(false);
+  //     handleOpen();
+  //   } catch (error) {
+  //     console.error(error);
+  //     alert(error.message);
+  //     setIsLoading(false);
+  //   }
+  // };
 
   const {
     register,
