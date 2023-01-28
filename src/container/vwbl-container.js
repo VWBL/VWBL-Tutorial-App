@@ -20,7 +20,7 @@ const useVWBL = () => {
       }
 
       // ウォレットに接続
-      await ethereum.send('eth_requestAccounts');
+      await ethereum.request({ method: 'eth_requestAccounts' });
 
       // web3インスタンスの生成
       const web3 = new Web3(ethereum);
