@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useCallback } from 'react';
-import { VALID_EXTENSIONS, MAX_FILE_SIZE } from '../../../utils';
-import { FilePreviewer, BackButton, NotificationModal } from '../../common';
-import { useForm } from 'react-hook-form';
 import { ErrorMessage } from '@hookform/error-message';
-import './Create.css';
-import { useDisclosure } from '../../../hooks';
+import React, { useCallback, useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
 import { VwblContainer } from '../../../container';
+import { useDisclosure } from '../../../hooks';
+import { MAX_FILE_SIZE, VALID_EXTENSIONS } from '../../../utils';
+import { BackButton, FilePreviewer, NotificationModal } from '../../common';
+import './Create.css';
 
+/**
+ * Create Component
+ * @returns 
+ */
 export const Create = () => {
   const [file, setFile] = useState();
   const [fileUrl, setFileUrl] = useState('');
@@ -15,8 +19,15 @@ export const Create = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [isChecked, setIsChecked] = useState(false);
   const { isOpen, handleOpen } = useDisclosure();
+
+  // get vwbl instace
   const { web3, vwbl, connectWallet } = VwblContainer.useContainer();
 
+  /**
+   * mintNft function
+   * @param {*} data 
+   * @returns 
+   */
   const mintNft = async (data) => {
     setIsLoading(true);
     if (!web3 || !vwbl) {
@@ -26,10 +37,14 @@ export const Create = () => {
       return;
     }
     const { asset, thumbnail, title, description } = data;
+
     try {
       if (!vwbl.signature) {
+        // call sign function
+        // vwblネットワークに対する署名を確認する。
         await vwbl.sign();
       }
+      // call managedCreateTokenForIPFS function (mint VWBL NFT)
       await vwbl.managedCreateTokenForIPFS(title, description, asset[0], thumbnail[0], 0);
 
       setIsLoading(false);
@@ -47,11 +62,17 @@ export const Create = () => {
     formState: { errors },
   } = useForm();
 
+  /**
+   * onChangeFile function
+   */
   const onChangeFile = useCallback((e) => {
     const file = e.target.files[0];
     setFile(file);
   }, []);
 
+  /**
+   * onChangeThumbnail function
+   */
   const onChangeThumbnail = useCallback((e) => {
     const thumbnail = e.target.files[0];
     if (!thumbnail?.type.match(VALID_EXTENSIONS.image)) {
@@ -61,11 +82,17 @@ export const Create = () => {
     setThumbnail(thumbnail);
   }, []);
 
+  /**
+   * onClearFile function
+   */
   const onClearFile = useCallback(() => {
     setFileUrl('');
     setFile(undefined);
   }, []);
 
+  /**
+   * onClearThumbnail function
+   */
   const onClearThumbnail = useCallback(() => {
     setThumbnailUrl('');
     setThumbnail(undefined);
