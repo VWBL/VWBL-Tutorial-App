@@ -9,6 +9,8 @@ import { VwblContainer } from '../container';
 export const useTransferNft = () => {
   const [isComplete, setIsComplete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+
+  // get vwbl instance
   const { vwbl } = VwblContainer.useContainer();
   const tokenId = Number(useParams().id);
   const navigate = useNavigate();
@@ -23,6 +25,7 @@ export const useTransferNft = () => {
       console.log('Now your wallet is not connected. Please connect your wallet.');
       return;
     }
+    // form dataからaddressを取得する。
     const { address } = data;
     setIsLoading(true);
 
@@ -37,6 +40,9 @@ export const useTransferNft = () => {
     }
   };
 
+  /**
+   * handleComplete function
+   */
   const handleComplete = () => {
     setIsComplete((prev) => !prev);
     navigate('/');

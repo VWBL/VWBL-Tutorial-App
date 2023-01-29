@@ -1,11 +1,16 @@
+import { ErrorMessage } from '@hookform/error-message';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { useTransferNft } from '../../../hooks';
 import { FileViewer } from '../file-viewer/FileViewer';
 import { NotificationModal } from '../notification-modal/NotificationModal';
-import { ErrorMessage } from '@hookform/error-message';
 import './TransferModal.css';
-import { useTransferNft } from '../../../hooks';
 
+/**
+ * TransferModal component
+ * @param {*} param0 
+ * @returns 
+ */
 export const TransferModal = ({ open, onClose, nft }) => {
   const { isComplete, isLoading, transferNft, handleComplete } = useTransferNft();
   const {
