@@ -1,26 +1,37 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useNavigate, useParams } from 'react-router-dom';
 import { VwblContainer } from '../../../container';
 import { useDisclosure } from '../../../hooks';
 import { BackButton, CustomLoading, FileViewer, Section, TransferModal } from '../../common';
 import './Detail.css';
 
+/**
+ * Detail Component
+ */
 export const Detail = () => {
   const [decryptedNft, setDecryptedNft] = useState();
   const [isViewingThumbnail, setViewingDataType] = useState(true);
+  
+  // get vwbl instance
   const { userAddress, vwbl } = VwblContainer.useContainer();
   const { isOpen, handleOpen } = useDisclosure();
   const tokenId = Number(useParams().id);
   const navigate = useNavigate();
 
+  /**
+   * fetchDecryptedNftByTokenId function
+   * @param {*} id 
+   */
   const fetchDecryptedNftByTokenId = async (id) => {
     try {
       if (!vwbl) {
         throw new Error('Now your wallet is not connected. Please connect your wallet.');
       }
       if (!vwbl.signature) {
+        // call sign function
         await vwbl.sign();
       }
+      // get decrypted NFT data
       const decryptedNft = await vwbl.getTokenById(id);
       setDecryptedNft(decryptedNft);
     } catch (error) {
@@ -29,6 +40,9 @@ export const Detail = () => {
     }
   };
 
+  /**
+   * handleViewData function
+   */
   const handleViewData = () => {
     setViewingDataType((prev) => !prev);
   };

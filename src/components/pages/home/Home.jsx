@@ -1,18 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { VwblContainer } from '../../../container';
-import { TbWalletOff } from 'react-icons/tb';
-import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
-import { ItemList } from '../../common';
 import clsx from 'clsx';
-import './Home.css';
+import React, { useEffect, useState } from 'react';
+import { TbWalletOff } from 'react-icons/tb';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
+import { VwblContainer } from '../../../container';
+import { ItemList } from '../../common';
+import './Home.css';
 
+/**
+ * Home Component 
+ * @returns 
+ */
 export const Home = () => {
   const [tabIndex, setTabIndex] = useState(0);
   const [mintedNfts, setMintedNfts] = useState();
   const [ownedNfts, setOwnedNfts] = useState();
+
+  // get vwbl instance
   const { userAddress, vwbl, web3, connectWallet, disconnectWallet } = VwblContainer.useContainer();
 
+  /**
+   * fetchNfts function
+   * @returns 
+   */
   const fetchNfts = async () => {
     if (!userAddress || !web3 || !vwbl) {
       console.log('Now your wallet is not connected. Please connect your wallet.');
@@ -20,21 +30,27 @@ export const Home = () => {
     }
 
     try {
+      // get token IDs
       const mintedTokenIds = await vwbl.getTokenByMinter(userAddress);
       if (mintedTokenIds.length) {
         const mintedNfts = [];
         for (const tokenId of mintedTokenIds) {
+          // get metadata
           const metadata = await vwbl.getMetadata(tokenId);
+          // push 
           if (metadata) mintedNfts.push(metadata);
         }
         setMintedNfts(mintedNfts.reverse());
       }
 
+      // get owned token IDs
       const ownedTokenIds = await vwbl.getOwnTokenIds();
       if (ownedTokenIds.length) {
         const owendNfts = [];
         for (const tokenId of ownedTokenIds) {
+          // get metadata
           const metadata = await vwbl.getMetadata(tokenId);
+          // push 
           if (metadata) owendNfts.push(metadata);
         }
         setOwnedNfts(owendNfts.reverse());
