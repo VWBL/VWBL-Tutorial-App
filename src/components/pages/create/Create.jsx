@@ -46,6 +46,7 @@ export const Create = () => {
       }
       // call managedCreateTokenForIPFS function (mint VWBL NFT)
       await vwbl.managedCreateTokenForIPFS(title, description, asset[0], thumbnail[0], 0);
+      // await vwbl.managedCreateToken(title, description, asset[0], thumbnail[0],0);
 
       setIsLoading(false);
       handleOpen();
@@ -150,7 +151,8 @@ export const Create = () => {
           <FilePreviewer
             url={fileUrl}
             inputId="asset"
-            acceptType=".jpeg,.jpg,.png,.gif"
+            acceptType=".jpeg,.jpg,.png,.gif,.mp4,.mov,.mp3"
+            labelText={'Image, Video, Audio, or PDF'}
             opt={{
               ...register('asset', {
                 required: 'Asset is required',
@@ -176,7 +178,8 @@ export const Create = () => {
           <FilePreviewer
             url={thumbnailUrl}
             inputId="thumbnail"
-            acceptType=".jpeg,.jpg,.png,.gif"
+            acceptType=".jpeg,.jpg,.png,.gif,.mp4,.mov,.mp3"
+            labelText={'Image, Video, Audio, or PDF'}
             opt={{
               ...register('thumbnail', {
                 required: 'Thumbnail is required',

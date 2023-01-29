@@ -11,3 +11,19 @@
   display: flex;
   justify-content: center;
 }
+
+.View-Button {
+  width: 320px;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 100px;
+}
+
+.View-Button:hover {
+  cursor: pointer;
+  opacity: 0.6;
+}

@@ -2,6 +2,11 @@ import React from 'react';
 import { VscChromeClose } from 'react-icons/vsc';
 import './FilePreviewer.css';
 
+/**
+ * FilePreviewer Component
+ * @param {*} param0 
+ * @returns 
+ */
 export const FilePreviewer = ({ url, inputId, acceptType, opt, onChange, onClear }) => {
   return (
     <div className="Container">

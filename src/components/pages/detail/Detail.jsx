@@ -63,9 +63,9 @@ export const Detail = () => {
     <div style={{ height: 'calc(100vh - 160px)', display: 'flex' }}>
       <TransferModal open={isOpen} onClose={handleOpen} nft={decryptedNft} />
       {isViewingThumbnail ? (
-        <FileViewer url={decryptedNft.image} alt="NFT" height={'100%'} width={'100%'} />
+        <FileViewer nft={decryptedNft} />
       ) : (
-        <FileViewer url={decryptedNft.ownDataBase64[0]} alt="NFT" height={'100%'} width={'100%'} />
+        <FileViewer nft={decryptedNft} />
       )}
       <div className="Detail-Container">
         <div className="Data-Wrapper">
