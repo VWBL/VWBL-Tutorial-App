@@ -1,7 +1,9 @@
 import { ChevronLeftIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { Box, HStack, Text } from '@chakra-ui/react';
-import { Document, Page } from 'react-pdf';
+import { Document, Page, pdfjs } from 'react-pdf';
 import { usePdfViewer } from '../../../hooks/pdf-viewer';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.js`;
 
 /**
  * PdfViewer Component
@@ -10,6 +12,8 @@ import { usePdfViewer } from '../../../hooks/pdf-viewer';
  */
 export const PdfViewer = ({ fileUrl }) => {
   const { numPages, pageNumber, onDocumentLoadSuccess, onClickNextPage, onClickPreviousPage, targetRef, width } = usePdfViewer();
+
+  console.log("fileUrl:", fileUrl);
 
   return (
     <Box w='100%' ref={targetRef}>

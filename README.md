@@ -29,3 +29,4 @@ Let's become a more advanced NFT engineer with a VWBL NFT, which allows only tho
 - [https://www.npmjs.com/package/web3](https://www.npmjs.com/package/web3)
 - [https://www.npmjs.com/package/vwbl-sdk](https://www.npmjs.com/package/vwbl-sdk)
 - [vwbl-protocol docs](https://docs.vwbl-protocol.org/end-point-for-vwbl)
+- [【Github】react-pdf](https://github.com/wojtekmaj/react-pdf)

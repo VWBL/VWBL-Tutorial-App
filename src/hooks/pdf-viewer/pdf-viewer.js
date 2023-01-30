@@ -21,7 +21,7 @@ export const usePdfViewer = () => {
   };
 
   const targetRef = useRef(null);
-  const { getElementProperty } = useGetElementProperty<HTMLDivElement>(targetRef);
+  const { getElementProperty } = useGetElementProperty(targetRef);
 
   return {
     numPages,

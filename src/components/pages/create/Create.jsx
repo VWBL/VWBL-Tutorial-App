@@ -151,7 +151,7 @@ export const Create = () => {
           <FilePreviewer
             url={fileUrl}
             inputId="asset"
-            acceptType=".jpeg,.jpg,.png,.gif,.mp4,.mov,.mp3"
+            acceptType=".jpeg,.jpg,.png,.gif,.mp4,.mov,.mp3,.pdf"
             labelText={'Image, Video, Audio, or PDF'}
             opt={{
               ...register('asset', {
@@ -178,7 +178,7 @@ export const Create = () => {
           <FilePreviewer
             url={thumbnailUrl}
             inputId="thumbnail"
-            acceptType=".jpeg,.jpg,.png,.gif,.mp4,.mov,.mp3"
+            acceptType=".jpeg,.jpg,.png,.gif,.mp4,.mov,.mp3,.pdf"
             labelText={'Image, Video, Audio, or PDF'}
             opt={{
               ...register('thumbnail', {
