@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { VwblContainer } from '../../../container';
 import { useDisclosure } from '../../../hooks';
-import { MAX_FILE_SIZE, VALID_EXTENSIONS } from '../../../utils';
+import { BASE64_MAX_SIZE, MAX_FILE_SIZE, VALID_EXTENSIONS } from '../../../utils';
 import { BackButton, FilePreviewer, NotificationModal } from '../../common';
 import './Create.css';
 
@@ -45,8 +45,12 @@ export const Create = () => {
         // vwblネットワークに対する署名を確認する。
         await vwbl.sign();
       }
+
+      const isLarge = asset[0].size > MAX_FILE_SIZE;
+      const isBase64 = asset[0].size < BASE64_MAX_SIZE;
+      const plainFile = isLarge ? segmentation(asset[0], MAX_FILE_SIZE) : asset[0];
       // call managedCreateTokenForIPFS function (mint VWBL NFT)
-      await vwbl.managedCreateTokenForIPFS(title, description, asset[0], thumbnail[0], 0);
+      await vwbl.managedCreateTokenForIPFS(title, description, plainFile, thumbnail[0], 0, isBase64 ? 'base64' : 'binary',);
       // await vwbl.managedCreateToken(title, description, asset[0], thumbnail[0],0);
 
       setIsLoading(false);
@@ -100,6 +104,24 @@ export const Create = () => {
     setThumbnailUrl('');
     setThumbnail(undefined);
   }, []);
+
+  /**
+   * segmentation function
+   * @param {*} file 
+   * @param {*} segmentSize 
+   * @returns 
+   */
+  const segmentation = (file, segmentSize) => {
+    const segments = [];
+    let fi = 0;
+    while (fi * segmentSize < file.size) {
+      const segment = file.slice(fi * segmentSize, (fi + 1) * segmentSize);
+      segments.push(new File([segment], `${file.name}-${fi}`, { type: file.type }));
+      ++fi;
+    }
+  
+    return segments;
+  };
 
   useEffect(() => {
     let fileReaderForFile;

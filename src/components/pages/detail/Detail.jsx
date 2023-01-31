@@ -63,7 +63,7 @@ export const Detail = () => {
     <div style={{ height: 'calc(100vh - 160px)', display: 'flex' }}>
       <TransferModal open={isOpen} onClose={handleOpen} nft={decryptedNft} />
       {isViewingThumbnail ? (
-        <FileViewer nft={decryptedNft} />
+        <img src={decryptedNft.image} alt='thumbnail data' rounded='md' />
       ) : (
         <FileViewer nft={decryptedNft} />
       )}

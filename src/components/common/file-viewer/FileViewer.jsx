@@ -9,7 +9,7 @@ import './FileViewer.css';
  * @param {*} param0 nft
  * @returns 
  */
-export const FileViewer = ({ nft }) => {
+export const FileViewer = ({ nft, isViewingThumbnail }) => {
   const [fileUrl, setFileUrl] = useState('');
 
   /**
