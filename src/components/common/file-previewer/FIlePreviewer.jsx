@@ -9,7 +9,7 @@ import './FilePreviewer.css';
  * @param {*} param0 
  * @returns 
  */
-export const FilePreviewer = ({ url, inputId, acceptType, opt,mimeType, onChange, onClear }) => {
+export const FilePreviewer = ({ url, inputId, acceptType, opt,labelText, mimeType, onChange, onClear }) => {
 
   /**
    * switchPlayer
@@ -41,7 +41,7 @@ export const FilePreviewer = ({ url, inputId, acceptType, opt,mimeType, onChange
       ) : (
         <div className="Button-Content">
           <span className="Notification">
-            Image（{acceptType}）
+            {labelText}（{acceptType}）
             <br />
             Max 1.5GB
           </span>

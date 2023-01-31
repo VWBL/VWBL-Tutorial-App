@@ -203,8 +203,8 @@ export const Create = () => {
           <FilePreviewer
             url={thumbnailUrl}
             inputId="thumbnail"
-            acceptType=".jpeg,.jpg,.png,.gif,.mp4,.mov,.mp3,.pdf"
-            labelText={'Image, Video, Audio, or PDF'}
+            acceptType=".jpeg,.jpg,.png,.gif"
+            labelText={'Image'}
             opt={{
               ...register('thumbnail', {
                 required: 'Thumbnail is required',
