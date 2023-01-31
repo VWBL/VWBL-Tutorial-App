@@ -14,6 +14,7 @@ import './Create.css';
 export const Create = () => {
   const [file, setFile] = useState();
   const [fileUrl, setFileUrl] = useState('');
+  const [mimeType, setMimeType] = useState('');
   const [thumbnail, setThumbnail] = useState();
   const [thumbnailUrl, setThumbnailUrl] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -68,6 +69,7 @@ export const Create = () => {
    */
   const onChangeFile = useCallback((e) => {
     const file = e.target.files[0];
+    setMimeType(file.type);
     setFile(file);
   }, []);
 
@@ -76,7 +78,7 @@ export const Create = () => {
    */
   const onChangeThumbnail = useCallback((e) => {
     const thumbnail = e.target.files[0];
-    if (!thumbnail?.type.match(VALID_EXTENSIONS.image)) {
+    if (!thumbnail?.type.match(VALID_EXTENSIONS.image || VALID_EXTENSIONS.audio || VALID_EXTENSIONS.video || 'pdf')) {
       alert('Image mime type is not valid');
       return;
     }
@@ -153,6 +155,7 @@ export const Create = () => {
             inputId="asset"
             acceptType=".jpeg,.jpg,.png,.gif,.mp4,.mov,.mp3,.pdf"
             labelText={'Image, Video, Audio, or PDF'}
+            mimeType={mimeType}
             opt={{
               ...register('asset', {
                 required: 'Asset is required',
