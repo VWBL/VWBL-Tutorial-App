@@ -62,7 +62,7 @@ export const FileViewer = ({ nft }) => {
           return <button className="View-Button" onClick={download}>Download</button>;
         }
       } else {
-        return <img src={nft.image} alt='thumbnail data' rounded='md' />;
+        return <img src={fileUrl} alt='thumbnail data' rounded='md' />;
       }
     },
     [download, fileUrl],
