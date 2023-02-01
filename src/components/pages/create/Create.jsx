@@ -46,6 +46,11 @@ export const Create = () => {
         await vwbl.sign();
       }
 
+      if (!title || !description || !asset || !thumbnail) {
+        console.log('Something went wrong.');
+        return;
+      }
+
       const isLarge = asset[0].size > MAX_FILE_SIZE;
       const isBase64 = asset[0].size < BASE64_MAX_SIZE;
       const plainFile = isLarge ? segmentation(asset[0], MAX_FILE_SIZE) : asset[0];

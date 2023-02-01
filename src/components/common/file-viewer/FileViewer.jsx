@@ -36,7 +36,7 @@ export const FileViewer = ({ nft, isViewingThumbnail }) => {
       const url =
         nft.encryptLogic == 'base64'
           ? nft.ownDataBase64[0]
-          : URL.createObjectURL(new Blob(nft.ownFiles, { type: nft.mimeType })); //TODO: fix type of ownFiles
+          : URL.createObjectURL(new Blob(nft.ownFiles, { type: nft.mimeType })); 
       setFileUrl(url);
     }
 
@@ -51,7 +51,7 @@ export const FileViewer = ({ nft, isViewingThumbnail }) => {
     (nft) => {
       if (isExtractMetadata(nft)) {
         if (nft.mimeType.match(VALID_EXTENSIONS.image)) {
-          return <img src={fileUrl} alt='original data' rounded='md' width='100%' height='100%' objectFit='contain' />;
+          return <img src={fileUrl} alt='original data' rounded='md' height='100%' width='100%' objectFit='contain' />;
         } else if (nft.mimeType.match(VALID_EXTENSIONS.video)) {
           return <ReactPlayer url={fileUrl} controls={true} width='100%' height='100%' />;
         } else if (nft.mimeType.match(VALID_EXTENSIONS.audio)) {
