@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 
 module.exports = function override(config, env) {
   config.resolve.fallback = {
@@ -19,6 +20,7 @@ module.exports = function override(config, env) {
     ...env.stringified,
     'process.env.FLUENTFFMPEG_COV': false
   }));
+  config.plugins.push(new CleanWebpackPlugin());
   config.plugins.push(new webpack.ProvidePlugin({
     process: 'process/browser',
   }));
