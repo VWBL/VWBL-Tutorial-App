@@ -28,10 +28,10 @@ export const useTransferNft = () => {
       await vwbl.safeTransfer(address, tokenId);
 
       //　Loadingモーダルを閉じる
-      setIsLoading(true);
+      setIsLoading(false);
 
       // 送信完了モーダルを表示する
-      setIsComplete(false);
+      setIsComplete(true);
     } catch (error) {
       // エラー内容の表示
       console.error(error);
