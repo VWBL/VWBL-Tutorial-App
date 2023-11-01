@@ -1,23 +1,26 @@
 const webpack = require('webpack');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
-const webpackNodeExternals = require('webpack-node-externals');
 
 module.exports = function override(config, env) {
   config.resolve.fallback = {
     fs: false,
-    os: false,
     https: false,
     http: false,
     crypto: false,
     path: false,
     child_process: false,
-    stream: false
+    stream: false,
+    os: require.resolve("os-browserify/browser"),
+    process: false
+  };
+  config.resolve.alias = {
+    process: "process/browser"
   };
   config.plugins.push(new webpack.DefinePlugin({
     ...env.stringified,
     'process.env.FLUENTFFMPEG_COV': false
   }));
-  config.plugins.push(new CleanWebpackPlugin());
-  config.externals =[webpackNodeExternals()];
+  config.plugins.push(new webpack.ProvidePlugin({
+    process: 'process/browser',
+  }));
   return config;
 };
