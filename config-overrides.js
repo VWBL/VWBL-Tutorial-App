@@ -1,4 +1,6 @@
 const webpack = require('webpack');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const webpackNodeExternals = require('webpack-node-externals');
 
 module.exports = function override(config, env) {
   config.resolve.fallback = {
@@ -15,5 +17,7 @@ module.exports = function override(config, env) {
     ...env.stringified,
     'process.env.FLUENTFFMPEG_COV': false
   }));
+  config.plugins.push(new CleanWebpackPlugin());
+  config.externals =[webpackNodeExternals()];
   return config;
 };

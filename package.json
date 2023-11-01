@@ -43,5 +43,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^4.0.0",
+    "webpack-node-externals": "^3.0.0"
   }
 }
